@@ -1,70 +1,127 @@
-# Getting Started with Create React App
+# ProductCrudRR
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## _A Full-Stack Application with Rails API and React Frontend_
 
-## Available Scripts
+ProductCrudRR is a study project to practice building a full-stack application using **Ruby on Rails** as the backend API and **React** for the frontend. The project provides a basic product management CRUD interface, with features to add, view, edit, and delete products. The theme of the application is based on a dark color scheme, using black and pink.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+>> **Backend (Rails)**: Provides RESTful endpoints for product management (`index`, `show`, `create`, `update`, and `destroy`).
+>> **Frontend (React)**: Interactive interface to manage products with a stylish, responsive layout.
+>> **Styled Components**: The UI is themed with a pink and black color scheme.
+>> **Modals**: Custom modal popups for editing and deleting products, enhancing user experience.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+>> **Backend**: Ruby on Rails (API-only mode)
+>> **Frontend**: React
+>> **Database**: SQLite3 (development) or PostgreSQL (production)
+>> **Styling**: CSS modules
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ensure you have the following installed:
 
-### `npm run build`
+>> **Ruby** (v3.0+)
+>> **Rails** (v7+)
+>> **Node.js** (v14+)
+>> **npm** or **yarn**
+>> **SQLite3** or **PostgreSQL** (for database)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation Front
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 1. Clone the Repository
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sh
+git clone git@github.com:felp1713/ProductCrudRReact.git
+cd ProductCrudRR
+```
 
-### `npm run eject`
+### 2. Setup Backend (Rails API)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Navigate to the backend folder:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```sh
+cd backend
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install Gems:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+bundle install
+```
 
-## Learn More
+Setup Database:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+rails db:create
+rails db:migrate
+rails db:seed
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Start the Rails Server:
 
-### Code Splitting
+```sh
+rails s -p 3001
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The backend will be running on `http://localhost:3001`.
 
-### Analyzing the Bundle Size
+### 3. Setup Frontend (React)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Navigate to the frontend folder:
 
-### Making a Progressive Web App
+```sh
+cd ../frontend
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Install Dependencies:
 
-### Advanced Configuration
+```sh
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Configure CORS (Cross-Origin Resource Sharing):
 
-### Deployment
+Ensure that CORS is enabled on the Rails API by editing the `cors.rb` initializer in the backend:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```ruby
+# backend/config/initializers/cors.rb
 
-### `npm run build` fails to minify
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  allow do
+    origins 'http://localhost:3000'
+    resource '*', headers: :any, methods: %i[get post put patch delete options head]
+  end
+end
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Start the React Development Server:
+
+```sh
+npm start
+```
+
+The frontend will be running on `http://localhost:3000` and will communicate with the backend API on `http://localhost:3001`.
+
+## Usage
+
+Once both the backend and frontend servers are running, open `http://localhost:3000` in your browser. You will be able to:
+
+- View all products.
+- Add a new product.
+- Edit existing products using a modal form.
+- Delete products with a confirmation modal.
+
+## API Endpoints
+
+- `GET /products` - List all products
+- `POST /products` - Create a new product
+- `GET /products/:id` - Show a single product
+- `PATCH /products/:id` - Update a product
+- `DELETE /products/:id` - Delete a product
+
+## Development Notes
+
+- **Rails Server**: Make sure the Rails server is running on port `3001` for the frontend to communicate with the API.
+- **CORS Configuration**: CORS should be configured to allow requests from `http://localhost:3000`.
