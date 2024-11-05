@@ -6,27 +6,27 @@ ProductCrudRR is a study project to practice building a full-stack application u
 
 ## Features
 
->> **Backend (Rails)**: Provides RESTful endpoints for product management (`index`, `show`, `create`, `update`, and `destroy`).
->> **Frontend (React)**: Interactive interface to manage products with a stylish, responsive layout.
->> **Styled Components**: The UI is themed with a pink and black color scheme.
->> **Modals**: Custom modal popups for editing and deleting products, enhancing user experience.
+>- **Backend (Rails)**: Provides RESTful endpoints for product management (`index`, `show`, `create`, `update`, and `destroy`).
+>- **Frontend (React)**: Interactive interface to manage products with a stylish, responsive layout.
+>- **Styled Components**: The UI is themed with a pink and black color scheme.
+>- **Modals**: Custom modal popups for editing and deleting products, enhancing user experience.
 
 ## Tech Stack
 
->> **Backend**: Ruby on Rails (API-only mode)
->> **Frontend**: React
->> **Database**: SQLite3 (development) or PostgreSQL (production)
->> **Styling**: CSS modules
+>- **Backend**: Ruby on Rails (API-only mode)
+>- **Frontend**: React
+>- **Database**: SQLite3 (development) or PostgreSQL (production)
+>- **Styling**: CSS modules
 
 ## Prerequisites
 
 Ensure you have the following installed:
 
->> **Ruby** (v3.0+)
->> **Rails** (v7+)
->> **Node.js** (v14+)
->> **npm** or **yarn**
->> **SQLite3** or **PostgreSQL** (for database)
+>- **Ruby** (v3.0+)
+>- **Rails** (v7+)
+>- **Node.js** (v14+)
+>- **npm** or **yarn**
+>- **SQLite3** or **PostgreSQL** (for database)
 
 ## Installation Front
 
